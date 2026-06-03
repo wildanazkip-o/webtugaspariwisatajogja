@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artikel Wisata Yogyakarta</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #cdaf87;
+      }
+
+      .header {
+        background-color: #231512;
+        padding: 20px;
+        text-align: center;
+        color: #cdaf87;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f0ead6;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a,
+      .dropbtn {
+        display: inline-block;
+        color: #655c4f;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover,
+      .dropdown:hover .dropbtn {
+        background-color: #231512;
+        color: #f0ead6;
+      }
+
+      li.dropdown {
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f0ead6;
+        min-width: 120px;
+        box-shadow: 0px 8px 8px 0px #f0ead6;
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #231512;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #cdaf87;
+        color: #f0ead6;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .search-box {
+        max-width: 700px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .search-box input {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #cdaf87;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #231512;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      .wisata-item {
+        display: flex;
+        align-items: center;
+        gap: 50px;
+        margin: 100px 0;
+      }
+
+      .wisata-item.reverse {
+        flex-direction: row-reverse;
+      }
+
+      .wisata-image {
+        width: 700px;
+        height: 350px;
+        flex-shrink: 0;
+        background: #231512;
+        border-radius: 20px;
+      }
+
+      .wisata-content {
+        flex: 1;
+      }
+
+      .wisata-content h2 {
+        display: inline-block;
+        padding: 18px 40px;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #f0ead6;
+        background: rgba(35, 21, 18, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .wisata-image {
+        width: 700px;
+        height: 350px;
+        flex-shrink: 0;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .wisata-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: 0.8s;
+      }
+
+      .wisata-image img.active {
+        opacity: 1;
+      }
+
+      .preview {
+        display: inline-block;
+        padding: 18px 40px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #231512;
+        background: rgba(35, 21, 18, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .full-content {
+        display: none;
+        margin-top: 15px;
+      }
+
+      .full-content p {
+        display: inline-block;
+        padding: 18px 40px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #231512;
+        background: rgba(35, 21, 18, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .read-more-btn {
+        margin-top: 20px;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #231512;
+        color: #f0ead6;
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .wisata-item,
+        .wisata-item.reverse {
+          flex-direction: column;
+        }
+
+        .wisata-image {
+          width: 100%;
+          height: 250px;
+        }
+
+        .wisata-content h2 {
+          font-size: 32px;
+        }
+      }
+
+      .footer {
+        background-color: #f0ead6;
+        padding: 10px;
+        text-align: center;
+        color: #231512;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="img/d7d5b763-a78c-4213-89e5-d1e877a5f285.png" width="80px" />
+      <h1>YOGSITEKARTA</h1>
+      <em
+        >Website ini menyediakan informasi tempat wisata populer di Yogyakarta
+        serta artikel menarik seputar budaya dan pariwisata.</em
+      >
+    </div>
+
+    <div class="menu">
+      <ul>
+        <li><a href="beranda.html">BERANDA</a></li>
+
+        <li class="dropdown">
+          <a href="profil.html" class="dropbtn">PROFIL</a>
+          <div class="dropdown-content"></div>
+        </li>
+
+        <li class="dropdown">
+          <a href="artikel.html" class="dropbtn">ARTIKEL</a>
+          <div class="dropdown-content">
+            <a href="artikel.html#malioboro">MALIOBORO</a>
+            <a href="artikel.html#parangtritis">PANTAI PARANGTRITIS</a>
+            <a href="artikel.html#breksi">TEBING BREKSI</a>
+            <a href="artikel.html#prambanan">CANDI PRAMBANAN</a>
+            <a href="artikel.html#heha">HEHA SKY VIEW</a>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a href="bukutamu.html" class="dropbtn">BUKU TAMU</a>
+          <div class="dropdown-content"></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="searchArticle" placeholder="Cari wisata..." />
+    </div>
+
+    <div class="container">
+      <section id="malioboro" class="wisata-item">
+        <div class="wisata-image slider">
+          <img src="img/Malioboro-Yogyakarta1.jpg" class="active" />
+          <img src="img/Malioboro-Yogyakarta2" />
+          <img src="img/Malioboro-Yogyakarta3.jpg" />
+        </div>
+
+        <div class="wisata-content">
+          <h2>Malioboro</h2>
+
+          <p class="preview">
+            Ikon wisata Yogyakarta yang terkenal dengan pusat belanja dan
+            budaya.
+          </p>
+
+          <div class="full-content">
+            <p>
+              Malioboro merupakan kawasan wisata paling populer di Yogyakarta.
+              Jalan ini selalu ramai oleh wisatawan lokal maupun mancanegara.
+            </p>
+
+            <p>
+              Pengunjung dapat menikmati wisata belanja, kuliner khas,
+              pertunjukan seni jalanan, serta suasana budaya Jawa yang kental.
+            </p>
+          </div>
+
+          <button class="read-more-btn">Baca Selengkapnya</button>
+        </div>
+      </section>
+
+      <section id="parangtritis" class="wisata-item reverse">
+        <div class="wisata-image slider">
+          <img src="img/pantai1.jpg" class="active" />
+          <img src="img/pantai2.jpg" />
+          <img src="img/pantai3.jpg" />
+        </div>
+        <div class="wisata-content">
+          <h2>Pantai Parangtritis</h2>
+
+          <p class="preview">
+            Nikmati panorama pantai selatan dengan ombak dan sunset yang
+            memukau.
+          </p>
+
+          <div class="full-content">
+            <p>
+              Pantai Parangtritis terkenal dengan ombak besar dan pemandangan
+              sunset yang indah.
+            </p>
+
+            <p>
+              Tersedia berbagai aktivitas wisata seperti ATV, berkuda, dan
+              menikmati kuliner pesisir.
+            </p>
+          </div>
+
+          <button class="read-more-btn">Baca Selengkapnya</button>
+        </div>
+      </section>
+
+      <section id="breksi" class="wisata-item">
+        <div class="wisata-image slider">
+          <img src="img/tebing1.jpg" class="active" />
+          <img src="img/Tebing2.jpg" />
+          <img src="img/Tebing2.jpg" />
+        </div>
+        <div class="wisata-content">
+          <h2>Tebing Breksi</h2>
+
+          <p class="preview">
+            Destinasi unik dengan ukiran batu dan pemandangan kota dari
+            ketinggian.
+          </p>
+
+          <div class="full-content">
+            <p>
+              Tebing Breksi merupakan bekas area pertambangan yang kini menjadi
+              tempat wisata favorit.
+            </p>
+
+            <p>
+              Dari puncaknya pengunjung dapat menikmati panorama kota
+              Yogyakarta.
+            </p>
+          </div>
+
+          <button class="read-more-btn">Baca Selengkapnya</button>
+        </div>
+      </section>
+
+      <section id="prambanan" class="wisata-item reverse">
+        <div class="wisata-image slider">
+          <img src="img/candi1.jpeg" class="active" />
+          <img src="img/candi2.jpg" />
+          <img src="img/candi3.jpg" />
+        </div>
+        <div class="wisata-content">
+          <h2>Candi Prambanan</h2>
+
+          <p class="preview">
+            Candi Hindu terbesar di Indonesia yang kaya akan sejarah dan budaya.
+          </p>
+
+          <div class="full-content">
+            <p>
+              Prambanan merupakan situs warisan dunia UNESCO yang dibangun pada
+              abad ke-9.
+            </p>
+
+            <p>
+              Keindahan arsitektur dan legenda Roro Jonggrang menjadi daya tarik
+              utamanya.
+            </p>
+          </div>
+
+          <button class="read-more-btn">Baca Selengkapnya</button>
+        </div>
+      </section>
+
+      <section id="heha" class="wisata-item">
+        <div class="wisata-image slider">
+          <img src="img/heha1.webp" class="active" />
+          <img src="img/heha2.jpg" />
+          <img src="img/heha3" />
+        </div>
+
+        <div class="wisata-content">
+          <h2>HeHa Sky View</h2>
+
+          <p class="preview">
+            Tempat terbaik menikmati pemandangan kota Yogyakarta dari
+            ketinggian.
+          </p>
+
+          <div class="full-content">
+            <p>
+              HeHa Sky View menawarkan spot foto menarik dan area kuliner
+              modern.
+            </p>
+
+            <p>
+              Pada malam hari pengunjung dapat menikmati gemerlap lampu kota
+              Yogyakarta.
+            </p>
+          </div>
+
+          <button class="read-more-btn">Baca Selengkapnya</button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      document.querySelectorAll(".slider").forEach((slider) => {
+        const images = slider.querySelectorAll("img");
+
+        let index = 0;
+
+        setInterval(() => {
+          images[index].classList.remove("active");
+
+          index++;
+
+          if (index >= images.length) {
+            index = 0;
+          }
+
+          images[index].classList.add("active");
+        }, 3000);
+      });
+
+      document.querySelectorAll(".read-more-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const content = this.parentElement.querySelector(".full-content");
+
+          if (content.style.display === "block") {
+            content.style.display = "none";
+            this.textContent = "Baca Selengkapnya";
+          } else {
+            content.style.display = "block";
+            this.textContent = "Sembunyikan";
+          }
+        });
+      });
+
+      const searchInput = document.getElementById("searchArticle");
+
+      searchInput.addEventListener("keyup", function () {
+        const keyword = this.value.toLowerCase();
+
+        const articles = document.querySelectorAll(".wisata-item");
+
+        articles.forEach((article) => {
+          const text = article.textContent.toLowerCase();
+
+          if (text.includes(keyword)) {
+            article.style.display = "flex";
+          } else {
+            article.style.display = "none";
+          }
+        });
+      });
+    </script>
+
+    <div class="footer">
+      <em>@COPYRIGHT | YOGSITEKARTA 2026. | PRIVACY POLICY</em>
+    </div>
+  </body>
+</html>

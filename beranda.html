@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HALAMAN WEB CSS</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #cdaf87;
+      }
+
+      .header {
+        background-color: #231512;
+        padding: 20px;
+        text-align: center;
+        color: #cdaf87;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f0ead6;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a,
+      .dropbtn {
+        display: inline-block;
+        color: #655c4f;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover,
+      .dropdown:hover .dropbtn {
+        background-color: #231512;
+        color: #f0ead6;
+      }
+
+      li.dropdown {
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f0ead6;
+        min-width: 120px;
+        box-shadow: 0px 8px 8px 0px #f0ead6;
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #231512;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #cdaf87;
+        color: #f0ead6;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .hero-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 1s ease;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .slide::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 12%;
+        transform: translateY(-50%);
+        color: #fff;
+        z-index: 2;
+        max-width: 700px;
+      }
+
+      .slide-content h1 {
+        display: inline-block;
+        padding: 18px 40px;
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #cdaf87;
+        background: rgba(35, 21, 18, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .slide-content p {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+      }
+
+      .btn-slide {
+        display: inline-block;
+        background: #cdaf87;
+        color: #231512;
+        padding: 18px 40px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+      }
+
+      .footer {
+        background-color: #f0ead6;
+        padding: 10px;
+        text-align: center;
+        color: #231512;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <img src="img/d7d5b763-a78c-4213-89e5-d1e877a5f285.png" width="80px" />
+      <h1>YOGSITEKARTA</h1>
+      <em
+        >Website ini menyediakan informasi tempat wisata populer di Yogyakarta
+        serta artikel menarik seputar budaya dan pariwisata.</em
+      >
+    </div>
+
+    <div class="menu">
+      <ul>
+        <li><a href="beranda.html">BERANDA</a></li>
+
+        <li class="dropdown">
+          <a href="profil.html" class="dropbtn">PROFIL</a>
+          <div class="dropdown-content"></div>
+        </li>
+
+        <li class="dropdown">
+          <a href="artikel.html" class="dropbtn">ARTIKEL</a>
+          <div class="dropdown-content">
+            <a href="artikel.html#malioboro">MALIOBORO</a>
+            <a href="artikel.html#parangtritis">PANTAI PARANGTRITIS</a>
+            <a href="artikel.html#breksi">TEBING BREKSI</a>
+            <a href="artikel.html#prambanan">CANDI PRAMBANAN</a>
+            <a href="artikel.html#heha">HEHA SKY VIEW</a>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a href="bukutamu.html" class="dropbtn">BUKU TAMU</a>
+          <div class="dropdown-content"></div>
+        </li>
+      </ul>
+    </div>
+    <section class="hero-slider">
+      <div class="slide active">
+        <img src="img/malioboro2.jpg" alt="Malioboro" />
+        <div class="slide-content">
+          <h1>Malioboro</h1>
+          <p>
+            Ikon wisata Yogyakarta yang terkenal dengan suasana budaya dan pusat
+            belanja.
+          </p>
+          <a href="artikel.html#malioboro" class="btn-slide"
+            >Baca Selengkapnya</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="img/61243da4d2758.jpg" alt="Pantai Parangtritis" />
+        <div class="slide-content">
+          <h1>Pantai Parangtritis</h1>
+          <p>
+            Nikmati panorama pantai selatan dengan ombak dan sunset yang
+            memukau.
+          </p>
+          <a href="artikel.html#parangtritis" class="btn-slide"
+            >Baca Selengkapnya</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="img/6154025ebec57.jpg" alt="Tebing Breksi" />
+        <div class="slide-content">
+          <h1>Tebing Breksi</h1>
+          <p>
+            Destinasi unik dengan ukiran batu dan pemandangan kota dari
+            ketinggian.
+          </p>
+          <a href="artikel.html#breksi" class="btn-slide">Baca Selengkapnya</a>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img
+          src="img/Candi-Prambanan-Makna-Yang-Terkandung-di-Dalamnya-1000x570.jpg"
+          alt="Candi Prambanan"
+        />
+        <div class="slide-content">
+          <h1>Candi Prambanan</h1>
+          <p>
+            Candi Hindu terbesar di Indonesia yang kaya akan sejarah dan budaya.
+          </p>
+          <a href="artikel.html#prambanan" class="btn-slide"
+            >Baca Selengkapnya</a
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <img
+          src="img/118781441_306738327097253_4000647999436703134_n.jpg"
+          alt="He"
+        />
+        <div class="slide-content">
+          <h1>HeHa Sky View</h1>
+          <p>
+            Tempat terbaik menikmati pemandangan kota Yogyakarta dari
+            ketinggian.
+          </p>
+          <a href="artikel.html#heha" class="btn-slide">Baca Selengkapnya</a>
+        </div>
+      </div>
+    </section>
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
+      function changeSlide() {
+        slides[currentSlide].classList.remove("active");
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+          currentSlide = 0;
+        }
+
+        slides[currentSlide].classList.add("active");
+      }
+
+      setInterval(changeSlide, 5000);
+    </script>
+    <div class="footer">
+      <em>@COPYRIGHT | YOGSITEKARTA 2026. | PRIVACY POLICY</em>
+    </div>
+  </body>
+</html>
